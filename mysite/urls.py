@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from mysite.view import *
+from books import views
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
-	url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
-    
+    url(r'^hello/$', hello),
+    url(r'^time/$', current_datetime),
+    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^display_meta/$', display_meta),
+    url(r'^display_meta1/$', display_meta1),
+    url(r'^search/$', views.search),
+    url(r'^contact/$', views.contact),
+    url(r'^accounts/login/$', login),
+    url(r'^accounts/logout/$', logout),
 ]
+

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+Display mata
+{% endblock%}
+
+{% block content %}
+<table>
+{% for key, value in dicts %}
+<tr><td>{{key}}</td><td>{{value}}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

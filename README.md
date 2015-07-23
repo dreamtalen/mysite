@@ -1,2 +1,0 @@
-# mysite
-# Django tutorial
