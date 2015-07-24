@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 import datetime
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 def hello(request):
 	return HttpResponse("Hello world")
@@ -31,3 +33,14 @@ def display_meta(request):
 	dicts.sort()
 	return render_to_response('display_meta.html', {'dicts':dicts})
 
+def register(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			new_user = form.save()
+			return HttpResponseRedirect("/books")
+	else:
+		form = UserCreationForm()
+	return render_to_response("registration/register.html",{
+		'form': form,
+	})
